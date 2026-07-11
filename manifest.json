@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "آموزشیار اکسپورتر",
+  "version": "1.0.0",
+  "description": "استخراج و خروجی حرفه‌ای دروس از سامانه آموزشیار",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://eserv.iau.ir/*",
+    "https://stdn.iau.ir/*",
+    "https://stdn2.iau.ir/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "amozeshyar-exporter",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://eserv.iau.ir/*",
+        "https://stdn.iau.ir/*",
+        "https://stdn2.iau.ir/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": [
+        "https://eserv.iau.ir/*",
+        "https://stdn.iau.ir/*",
+        "https://stdn2.iau.ir/*"
+      ]
+    }
+  ]
+}
