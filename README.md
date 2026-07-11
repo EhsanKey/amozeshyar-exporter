@@ -105,7 +105,7 @@ chrome://extensions
 
 ## Usage
 
-1. Log in to one of the supported Amuzeshyar systems
+1. Log in to one of the supported Amozeshyar systems
 2. Open a page containing the course table
 3. The extension toolbar will automatically appear at the bottom-left corner
 4. Click **Register Courses** — courses from the current page will be collected
