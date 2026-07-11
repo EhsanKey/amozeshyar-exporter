@@ -1,6 +1,6 @@
-# Amuzeshyar Exporter — Chrome/Firefox Extension
+# Amozeshyar Exporter — Chrome/Firefox Extension
 
-A professional Chrome extension for extracting course data from the **Amuzeshyar (IAU E-Services)** system and exporting it into different formats.
+A professional Chrome extension for extracting course data from the **Amozeshyar (IAU E-Services)** system and exporting it into different formats.
 
 ---
 
