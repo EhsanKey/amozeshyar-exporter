@@ -1,13 +1,13 @@
 # Amozeshyar Exporter — Chrome/Firefox Extension
 
-A professional Chrome extension for extracting course data from the **Amozeshyar (IAU E-Services)** system and exporting it into different formats.
+A professional browser extension for extracting course data from the **Amozeshyar (IAU E-Services)** system and exporting it into different formats.
 
 ---
 
 ## Features
 
-- **One-click course registration** from the course table
-- **Pagination-aware extraction**: Collects courses across multiple pages without losing data
+- **One-click course data extraction** from the course table
+- **Multi-page course collection** without losing previously extracted data
 - **Duplicate prevention** based on course code + offering code
 - **Excel export (.xlsx)** — RTL format with styled headers and optimized column widths
 - **PDF export** — Professional print layout with full Persian font support
@@ -28,16 +28,55 @@ A professional Chrome extension for extracting course data from the **Amozeshyar
 
 ---
 
+## Installation
+
+### Download Pre-built Extension
+
+You can download the pre-built version of the extension directly from GitHub Releases:
+
+**[Download Amozeshyar Exporter v1.0.0](https://github.com/EhsanKey/amozeshyar-exporter/releases/download/v1.0.0/amozeshyar-exporter-v1.0.0.zip)**
+
+After downloading:
+
+1. Extract the downloaded ZIP file
+2. Open Chrome and navigate to:
+
+```text
+chrome://extensions
+```
+
+3. Enable **Developer mode** from the top-right corner
+4. Click **Load unpacked**
+5. Select the extracted **`dist`** folder
+6. The extension will be installed and activated ✅
+
+---
+
+## Usage
+
+1. Log in to one of the supported Amozeshyar systems
+2. Open a page containing the course table
+3. The extension toolbar will automatically appear at the bottom-left corner
+4. Click **Register Courses** — courses from the current page will be collected
+5. Navigate to the next page and click **Register Courses** again — new courses will be added
+6. After collecting all courses, click **Export File**
+7. In the export modal:
+   - Select the desired columns
+   - Enter a custom filename (optional)
+   - Choose **Export Excel** or **Export PDF**
+
+---
+
 ## Project Structure
 
-```
+```text
 amozeshyar-exporter/
 ├── manifest.json                 # Manifest V3 configuration
 ├── package.json
 ├── tsconfig.json
 ├── webpack.config.js
 ├── public/
-│   └── icons/                    # Extension PNG icons
+│   └── icons/                    # Extension icons (PNG and SVG)
 ├── dist/                         # Generated build output
 └── src/
     ├── types/
@@ -63,7 +102,7 @@ amozeshyar-exporter/
 
 ---
 
-## Installation & Setup
+## Development Setup
 
 ### Prerequisites
 
@@ -74,47 +113,30 @@ amozeshyar-exporter/
 
 ---
 
-### Build Steps
+### Build from Source
 
 ```bash
-# 1. Install dependencies
+# 1. Clone the repository
+git clone https://github.com/EhsanKey/amozeshyar-exporter.git
+
+# 2. Navigate to the project directory
+cd amozeshyar-exporter
+
+# 3. Install dependencies
 npm install
 
-# 2. Build for production
+# 4. Build for production
 npm run build
 ```
 
 After the build process, the `dist/` folder will be generated and contain all production-ready extension files.
 
----
+To install the locally built extension on Chrome:
 
-## Installing on Chrome
-
-1. Open Chrome and navigate to:
-
-```
-chrome://extensions
-```
-
-2. Enable **Developer mode** from the top-right corner
+1. Open `chrome://extensions`
+2. Enable **Developer mode**
 3. Click **Load unpacked**
-4. Select the **`dist`** folder
-5. The extension will be installed and activated ✅
-
----
-
-## Usage
-
-1. Log in to one of the supported Amozeshyar systems
-2. Open a page containing the course table
-3. The extension toolbar will automatically appear at the bottom-left corner
-4. Click **Register Courses** — courses from the current page will be collected
-5. Navigate to the next page and click **Register Courses** again — new courses will be added
-6. After collecting all courses, click **Export File**
-7. In the export modal:
-   - Select the desired columns
-   - Enter a custom filename (optional)
-   - Choose **Export Excel** or **Export PDF**
+4. Select the generated **`dist`** folder
 
 ---
 
