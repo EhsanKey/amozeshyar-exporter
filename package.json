@@ -6,11 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "watch": "webpack --mode development --watch",
-    "generate-icons": "node scripts/generate-icons.js",
-    "prebuild": "node scripts/generate-icons.js",
-    "pack": "node scripts/create-zip.js",
-    "pack:source": "node scripts/create-source-zip.js"
+    "watch": "webpack --mode development --watch"
   },
   "dependencies": {
     "xlsx": "^0.18.5"
@@ -18,9 +14,7 @@
   "devDependencies": {
     "@types/chrome": "^0.0.270",
     "@types/node": "^20.11.0",
-    "archiver": "^7.0.1",
     "copy-webpack-plugin": "^12.0.2",
-    "sharp": "^0.34.5",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",
