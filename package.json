@@ -7,8 +7,6 @@
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "watch": "webpack --mode development --watch",
-    "generate-icons": "node scripts/generate-icons.js",
-    "prebuild": "node scripts/generate-icons.js",
     "pack": "node scripts/create-zip.js",
     "pack:source": "node scripts/create-source-zip.js"
   },
