@@ -12,6 +12,7 @@
     "@types/chrome": "^0.0.270",
     "@types/node": "^20.11.0",
     "copy-webpack-plugin": "^14.0.0",
+    "lint-staged": "^17.6.0",
     "prettier": "^3.9.9",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
@@ -20,5 +21,10 @@
   },
   "dependencies": {
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "lint-staged": {
+    "*.{js,jsx,mjs,cjs,ts,tsx,json,css}": [
+      "prettier --write"
+    ]
   }
 }
