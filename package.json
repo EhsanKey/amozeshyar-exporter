@@ -12,6 +12,7 @@
     "@types/chrome": "^0.0.270",
     "@types/node": "^20.11.0",
     "copy-webpack-plugin": "^14.0.0",
+    "prettier": "^3.9.9",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",
