@@ -1,5 +1,5 @@
-import { Course, CourseKey } from "../types/course";
-import { COURSE_COLUMNS } from "../constants/columns";
+import { Course, CourseKey } from '../types/course';
+import { COURSE_COLUMNS } from '../constants/columns';
 
 export function exportToPdf(
   courses: Course[],
@@ -7,17 +7,17 @@ export function exportToPdf(
   title: string,
 ): void {
   if (courses.length === 0) {
-    throw new Error("هیچ داده‌ای برای خروجی وجود ندارد.");
+    throw new Error('هیچ داده‌ای برای خروجی وجود ندارد.');
   }
   if (columns.length === 0) {
-    throw new Error("حداقل یک ستون باید انتخاب شود.");
+    throw new Error('حداقل یک ستون باید انتخاب شود.');
   }
 
   const html = buildPrintHtml(courses, columns, title);
-  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
   const url = URL.createObjectURL(blob);
 
-  const printWindow = window.open(url, "_blank");
+  const printWindow = window.open(url, '_blank');
   if (!printWindow) {
     fallbackPrint(html);
   }
@@ -39,34 +39,34 @@ function buildPrintHtml(
   const totalWeight =
     ROW_NUM_WIDTH + columnDefs.reduce((s, c) => s + c.pdfWidth, 0);
   const toPercent = (w: number): string =>
-    ((w / totalWeight) * 100).toFixed(2) + "%";
+    ((w / totalWeight) * 100).toFixed(2) + '%';
 
   const colGroup =
     `<col style="width:${toPercent(ROW_NUM_WIDTH)}">` +
     columnDefs
       .map((c) => `<col style="width:${toPercent(c.pdfWidth)}">`)
-      .join("");
+      .join('');
 
   const headerCells = columnDefs
     .map((c) => `<th>${escapeHtml(c.label)}</th>`)
-    .join("");
+    .join('');
 
   const bodyRows = courses
     .map((course, i) => {
       const cells = columns
         .map((key) => `<td>${escapeHtml(course[key])}</td>`)
-        .join("");
-      const rowClass = i % 2 === 0 ? "even" : "odd";
+        .join('');
+      const rowClass = i % 2 === 0 ? 'even' : 'odd';
       return `<tr class="${rowClass}"><td class="row-num">${i + 1}</td>${cells}</tr>`;
     })
-    .join("");
+    .join('');
 
-  const printDate = new Date().toLocaleDateString("fa-IR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
+  const printDate = new Date().toLocaleDateString('fa-IR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
   });
 
   return `<!DOCTYPE html>
@@ -294,9 +294,9 @@ function buildPrintHtml(
 }
 
 function fallbackPrint(html: string): void {
-  const iframe = document.createElement("iframe");
+  const iframe = document.createElement('iframe');
   iframe.style.cssText =
-    "position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;";
+    'position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;';
   document.body.appendChild(iframe);
 
   const doc = iframe.contentDocument ?? iframe.contentWindow?.document;
@@ -312,9 +312,9 @@ function fallbackPrint(html: string): void {
 
 function escapeHtml(str: string): string {
   return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
