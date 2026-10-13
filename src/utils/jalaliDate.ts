@@ -99,16 +99,16 @@ export function todayJalali(): JalaliDate {
 }
 
 export function formatJalali(date: JalaliDate): string {
-  const mm = String(date.month).padStart(2, "0");
-  const dd = String(date.day).padStart(2, "0");
+  const mm = String(date.month).padStart(2, '0');
+  const dd = String(date.day).padStart(2, '0');
   return `${date.year}/${mm}/${dd}`;
 }
 
 export function buildFileName(baseName: string): string {
   const today = todayJalali();
-  const mm = String(today.month).padStart(2, "0");
-  const dd = String(today.day).padStart(2, "0");
-  const name = baseName.trim() || "لیست دروس";
+  const mm = String(today.month).padStart(2, '0');
+  const dd = String(today.day).padStart(2, '0');
+  const name = baseName.trim() || 'لیست دروس';
   return `${name}/${mm}/${dd}`;
 }
 

@@ -23,12 +23,12 @@ export function createIconButton(
   label: string,
   attrs: Record<string, string> = {},
 ): HTMLButtonElement {
-  const btn = createElement("button", { className, attrs });
-  const iconSpan = createElement("span", {
-    className: "amz-btn__icon",
+  const btn = createElement('button', { className, attrs });
+  const iconSpan = createElement('span', {
+    className: 'amz-btn__icon',
     text: icon,
   });
-  const labelSpan = createElement("span", { text: label });
+  const labelSpan = createElement('span', { text: label });
   btn.appendChild(iconSpan);
   btn.appendChild(labelSpan);
   return btn;
@@ -39,25 +39,25 @@ export function setButtonContent(
   icon: string,
   label: string,
 ): void {
-  btn.textContent = "";
-  const iconSpan = createElement("span", {
-    className: "amz-btn__icon",
+  btn.textContent = '';
+  const iconSpan = createElement('span', {
+    className: 'amz-btn__icon',
     text: icon,
   });
-  const labelSpan = createElement("span", { text: label });
+  const labelSpan = createElement('span', { text: label });
   btn.appendChild(iconSpan);
   btn.appendChild(labelSpan);
 }
 
 export function showToast(
   message: string,
-  type: "success" | "error" | "info" = "success",
+  type: 'success' | 'error' | 'info' = 'success',
 ): void {
-  const existing = document.getElementById("amz-toast");
+  const existing = document.getElementById('amz-toast');
   if (existing) existing.remove();
 
-  const toast = createElement("div", {
-    id: "amz-toast",
+  const toast = createElement('div', {
+    id: 'amz-toast',
     className: `amz-toast amz-toast--${type}`,
     text: message,
   });
@@ -65,23 +65,23 @@ export function showToast(
   document.body.appendChild(toast);
 
   requestAnimationFrame(() => {
-    toast.classList.add("amz-toast--visible");
+    toast.classList.add('amz-toast--visible');
   });
 
   setTimeout(() => {
-    toast.classList.remove("amz-toast--visible");
+    toast.classList.remove('amz-toast--visible');
     setTimeout(() => toast.remove(), 400);
   }, 3000);
 }
 
 export function getCellText(cell: Element | null | undefined): string {
-  if (!cell) return "";
-  return (cell.textContent ?? "").replace(/\s+/g, " ").trim();
+  if (!cell) return '';
+  return (cell.textContent ?? '').replace(/\s+/g, ' ').trim();
 }
 
 export function injectStyles(css: string, id?: string): void {
   if (id && document.getElementById(id)) return;
-  const style = createElement("style", { attrs: { type: "text/css" } });
+  const style = createElement('style', { attrs: { type: 'text/css' } });
   if (id) style.id = id;
   style.textContent = css;
   document.head.appendChild(style);

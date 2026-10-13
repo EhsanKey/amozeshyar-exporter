@@ -1,11 +1,11 @@
-﻿import * as XLSX from "xlsx";
-import { Course, CourseKey } from "../types/course";
-import { COURSE_COLUMNS } from "../constants/columns";
+﻿import * as XLSX from 'xlsx';
+import { Course, CourseKey } from '../types/course';
+import { COURSE_COLUMNS } from '../constants/columns';
 
-const HEADER_BG_COLOR = "C5CAE9";
-const HEADER_FONT_COLOR = "1A237E";
-const ROW_ALT_BG_COLOR = "F5F5F5";
-const CELL_FONT_NAME = "Calibri";
+const HEADER_BG_COLOR = 'C5CAE9';
+const HEADER_FONT_COLOR = '1A237E';
+const ROW_ALT_BG_COLOR = 'F5F5F5';
+const CELL_FONT_NAME = 'Calibri';
 const HEADER_ROW_HEIGHT_PX = 30;
 
 export function exportToExcel(
@@ -14,10 +14,10 @@ export function exportToExcel(
   fileName: string,
 ): void {
   if (courses.length === 0) {
-    throw new Error("هیچ داده‌ای برای خروجی وجود ندارد.");
+    throw new Error('هیچ داده‌ای برای خروجی وجود ندارد.');
   }
   if (columns.length === 0) {
-    throw new Error("حداقل یک ستون باید انتخاب شود.");
+    throw new Error('حداقل یک ستون باید انتخاب شود.');
   }
 
   const workbook = XLSX.utils.book_new();
@@ -37,19 +37,19 @@ export function exportToExcel(
 
   const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
 
-  worksheet["!cols"] = columnDefs.map((c) => ({ wch: c.excelWidth }));
+  worksheet['!cols'] = columnDefs.map((c) => ({ wch: c.excelWidth }));
 
-  worksheet["!views"] = [
+  worksheet['!views'] = [
     {
       rightToLeft: true,
-      state: "frozen",
+      state: 'frozen',
       ySplit: 1,
-      topLeftCell: "A2",
-      activeCell: "A2",
+      topLeftCell: 'A2',
+      activeCell: 'A2',
     },
   ];
 
-  worksheet["!rows"] = [{ hpx: HEADER_ROW_HEIGHT_PX }];
+  worksheet['!rows'] = [{ hpx: HEADER_ROW_HEIGHT_PX }];
 
   const rowCount = sheetData.length;
   const colCount = columns.length;
@@ -68,7 +68,7 @@ export function exportToExcel(
           name: CELL_FONT_NAME,
           sz: isHeader ? 11 : 10,
           bold: isHeader,
-          color: { rgb: isHeader ? HEADER_FONT_COLOR : "212121" },
+          color: { rgb: isHeader ? HEADER_FONT_COLOR : '212121' },
         },
         fill: {
           fgColor: {
@@ -76,35 +76,35 @@ export function exportToExcel(
               ? HEADER_BG_COLOR
               : isEvenDataRow
                 ? ROW_ALT_BG_COLOR
-                : "FFFFFF",
+                : 'FFFFFF',
           },
-          patternType: "solid",
+          patternType: 'solid',
         },
         alignment: {
-          horizontal: isHeader ? "center" : "right",
-          vertical: "center",
+          horizontal: isHeader ? 'center' : 'right',
+          vertical: 'center',
           readingOrder: 2,
           wrapText: isHeader ? false : true,
         },
         border: {
-          top: { style: "thin", color: { rgb: "BDBDBD" } },
-          bottom: { style: "thin", color: { rgb: "BDBDBD" } },
-          left: { style: "thin", color: { rgb: "BDBDBD" } },
-          right: { style: "thin", color: { rgb: "BDBDBD" } },
+          top: { style: 'thin', color: { rgb: 'BDBDBD' } },
+          bottom: { style: 'thin', color: { rgb: 'BDBDBD' } },
+          left: { style: 'thin', color: { rgb: 'BDBDBD' } },
+          right: { style: 'thin', color: { rgb: 'BDBDBD' } },
         },
       };
     }
   }
 
-  XLSX.utils.book_append_sheet(workbook, worksheet, "دروس");
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'دروس');
 
   XLSX.writeFile(workbook, `${sanitizeFileName(fileName)}.xlsx`, {
-    bookType: "xlsx",
-    type: "binary",
+    bookType: 'xlsx',
+    type: 'binary',
     cellStyles: true,
   });
 }
 
 function sanitizeFileName(name: string): string {
-  return name.replace(/[/\\?%*:|"<>]/g, "-");
+  return name.replace(/[/\\?%*:|"<>]/g, '-');
 }

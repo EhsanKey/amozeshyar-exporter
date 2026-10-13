@@ -157,10 +157,7 @@ npm install
 # 3. Create a new branch
 git checkout -b feature/your-feature
 
-# 4. Make your changes and build the project
-npm run build
-
-# 5. Commit and push your changes
+# 4. Commit and push your changes
 git commit -m "feat: your description"
 git push origin feature/your-feature
 ```

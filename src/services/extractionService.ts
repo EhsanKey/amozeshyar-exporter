@@ -1,6 +1,6 @@
-import { Course } from "../types/course";
-import { TABLE_SELECTOR } from "../constants/columns";
-import { getCellText } from "../utils/domUtils";
+import { Course } from '../types/course';
+import { TABLE_SELECTOR } from '../constants/columns';
+import { getCellText } from '../utils/domUtils';
 
 const MIN_CELLS = 24;
 
@@ -13,19 +13,19 @@ export function findTable(): HTMLTableElement | null {
 export function extractCoursesFromPage(): Course[] {
   const table = findTable();
   if (!table) {
-    throw new Error("جدول دروس در این صفحه یافت نشد.");
+    throw new Error('جدول دروس در این صفحه یافت نشد.');
   }
 
-  const tbody = table.querySelector("tbody");
+  const tbody = table.querySelector('tbody');
   if (!tbody) {
     return [];
   }
 
-  const rows = Array.from(tbody.querySelectorAll<HTMLTableRowElement>("tr"));
+  const rows = Array.from(tbody.querySelectorAll<HTMLTableRowElement>('tr'));
   const courses: Course[] = [];
 
   for (const row of rows) {
-    const cells = Array.from(row.querySelectorAll<HTMLTableCellElement>("td"));
+    const cells = Array.from(row.querySelectorAll<HTMLTableCellElement>('td'));
 
     if (cells.length < MIN_CELLS) {
       continue;

@@ -1,5 +1,5 @@
-import { Course } from "../types/course";
-import { STORAGE_KEY } from "../constants/columns";
+import { Course } from '../types/course';
+import { STORAGE_KEY } from '../constants/columns';
 
 function courseKey(course: Course): string {
   return `${course.courseCode}::${course.classCode}`;
@@ -48,7 +48,6 @@ export async function clearCourses(): Promise<void> {
     });
   });
 }
-
 
 export async function getCourseCount(): Promise<number> {
   const courses = await loadCourses();
