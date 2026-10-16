@@ -34,5 +34,8 @@
     "*.{js,jsx,mjs,cjs,ts,tsx,json,css}": [
       "prettier --write"
     ]
+  },
+  "allowScripts": {
+    "simple-git-hooks": false
   }
 }
