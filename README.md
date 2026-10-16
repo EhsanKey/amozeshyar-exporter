@@ -151,8 +151,9 @@ Contributions are welcome! 🎉
 git clone https://github.com/EhsanKey/amozeshyar-exporter.git
 cd amozeshyar-exporter
 
-# 2. Install dependencies
+# 2. Install dependencies and git hooks
 npm install
+npm run prepare
 
 # 3. Create a new branch
 git checkout -b feature/your-feature
